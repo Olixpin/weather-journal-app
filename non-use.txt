@@ -1,0 +1,16 @@
+const helmet = require('helmet');
+const morgan = require('morgan');
+const compression = require('compression');
+const path = require('path');
+const fs = require('fs');
+const https = require('https');
+const http = require('http');
+
+const httpsPort = process.env.HTTPS_PORT || 3001;
+const httpPort = process.env.HTTP_PORT || 3002;
+const httpsOptions = {
+  key: fs.readFileSync('./https/key.pem'),
+  cert: fs.readFileSync('./https/cert.pem'),
+};
+
+const port = process.env.PORT || 3000;
